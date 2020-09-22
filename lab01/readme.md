@@ -1,3 +1,3 @@
-# Tarefa 1
+# Tarefa 1 sobre APIs de acesso
 https://github.com/Desnord/MC536/blob/master/lab01/notebook/data-api-python.ipynb
-# Tarefa 2
+# Tarefa 2 sobre Engenharia Reversa
