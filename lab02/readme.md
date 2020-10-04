@@ -1,2 +1,2 @@
 # Tarefa
-https://github.com/Desnord/MC536/blob/master/lab02/lab-logic-model-dbpedia.ipynb
+https://github.com/Desnord/MC536/blob/master/lab02/notebook/lab-logic-model-dbpedia.ipynb
