@@ -26,7 +26,8 @@ Use o `DELETE` para excluir o relacionamento que você criou (apenas ele).
 
 ### Resolução
 ~~~cypher
-(escreva aqui a resolução em Cypher)
+MATCH (met)-[del:SameAs]->(dip)
+DELETE del
 ~~~
 
 ## Exercício 4
