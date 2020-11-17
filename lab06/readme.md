@@ -15,7 +15,9 @@ Considerando que a `Dipyrone` e `Metamizole` são o mesmo medicamento com nomes 
 
 ### Resolução
 ~~~cypher
-(escreva aqui a resolução em Cypher)
+MATCH (met:Drug {name:"Metamizole"})
+MATCH (dip:Drug {name:"Dipyrone"})
+CREATE (met)-[:SameAs]->(dip)
 ~~~
 
 ## Exercício 3
