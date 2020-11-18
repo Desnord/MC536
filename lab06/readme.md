@@ -49,7 +49,9 @@ Construa um grafo ligando os medicamentos aos efeitos colaterais (com pesos asso
 
 MATCH (d:Drug)
 MATCH (s:SideEffect)
+
 CREATE (d)-[h:HasEffect]->(s)
+where d.drugbank = s.drugbank
 
 ~~~
 
@@ -66,6 +68,6 @@ MATCH (d:Drug)
 MATCH (s:SideEffect)
 
 MATCH (d)-[h:HasEffect]->(s)
-where s.name = 'Dipyrone'
+where s.codedrug = 'Dipyrone'
 RETURN h
 ~~~
