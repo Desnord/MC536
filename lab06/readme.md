@@ -36,17 +36,8 @@ Faça a projeção em relação a Patologia, ou seja, conecte patologias que sã
 
 ### Resolução
 ~~~cypher
-MATCH (pat:Patology)
-MATCH (pat2:Patology)
-
-MATCH (drg:Drug)
-MATCH (drg2:Drug)
-
-MATCH (drg)-[trt:Treats]->(pat)
-MATCH (drg2)-[trt2:Treats]->(pat2)
-
-WHERE drg.drugbank = drg2.drugbank AND pat.name <> pat2.name AND trt <> trt2
-CREATE (pat)-[:SameTreatment]->(pat2)
+MATCH (pat:Pathology)-[a]->(p:Drug)<-[b]-(pat2:Pathology)
+MERGE (pat)<-[r:Relates]->(pat2)
 ~~~
 
 ## Exercício 5
