@@ -52,10 +52,16 @@ Construa um grafo ligando os medicamentos aos efeitos colaterais (com pesos asso
 ## Exercício 6
 
 Que tipo de análise interessante pode ser feita com esse grafo?
+- todas as ocorrências de efeitos colaterais da dipirona.
 
 Proponha um tipo de análise e escreva uma sentença em Cypher que realize a análise.
 
 ### Resolução
 ~~~cypher
-(escreva aqui a resolução em Cypher)
+MATCH (d:Drug)
+MATCH (s:SideEffect)
+
+MATCH (d)-[h:HasEffect]->(s)
+where s.name = 'Dipyrone'
+RETURN h
 ~~~
