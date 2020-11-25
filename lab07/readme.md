@@ -4,11 +4,19 @@
 Calcule o Pagerank do exemplo da Wikipedia em Cypher:
 
 ~~~cypher
-(escreva aqui a resolução em Cypher)
-~~~
+LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/santanche/lab2learn/master/network/pagerank/pagerank-wikipedia.csv' AS line
 
-> Coloque aqui a imagem resultante conforme o exemplo (não obrigatório, mas sugerido - imagem produzida pelo CytoScape ou Gephi).
-![PageRank](images/pagerank-cytoscape.png)
+MERGE (p1:page {name:line.source})
+MERGE (p2:page {name:line.target})
+CREATE (p1)-[:link]->(p2)
+
+CALL gds.graph.create('pagerank','page','link')
+
+CALL gds.pageRank.stream('pagerank')
+YIELD nodeId, score
+RETURN gds.util.asNode(nodeId).name AS name, score
+ORDER BY score DESC
+~~~
 
 ~~~cypher
 (escreva aqui a resolução em Cypher)
