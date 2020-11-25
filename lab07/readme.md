@@ -14,6 +14,7 @@ CALL gds.graph.create('pagerank','page','link')
 
 CALL gds.pageRank.stream('pagerank')
 YIELD nodeId, score
+
 RETURN gds.util.asNode(nodeId).name AS name, score
 ORDER BY score DESC
 ~~~
@@ -22,5 +23,11 @@ ORDER BY score DESC
 Departing from a Drug-Drug graph created in a previous lab, whose relationship determines drugs taken together, apply a community detection in it to see the results:
 
 ~~~cypher
-(escreva aqui a resolução em Cypher)
+CALL gds.graph.create('community','drug','together')
+
+CALL gds.louvain.stream('community')
+YIELD nodeId, communityId
+
+RETURN gds.util.asNode(nodeId).id AS nid, communityId
+ORDER BY nid DESC
 ~~~
