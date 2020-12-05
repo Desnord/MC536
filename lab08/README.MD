@@ -1,10 +1,4 @@
-# Modelo para Apresentação do Lab08 - PubChem e DRON com XQuery/XPath
-
-Estrutura de pastas:
-
-~~~
-├── README.md  <- arquivo apresentando a tarefa
-~~~
+# Lab08 - PubChem e DRON com XQuery/XPath
 
 ## Tarefas com Publicações
 
