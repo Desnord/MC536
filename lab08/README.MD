@@ -57,11 +57,9 @@ Retorne quantas publicações são posteriores ao ano de 2011.
 ### Resolução
 ~~~xquery
 
-let $fichariodoc := doc('https://raw.githubusercontent.com/santanche/lab2learn/master/xml/fichario.xml')
+let $publicadoc := doc('http://www.ic.unicamp.br/~santanch/publications/publications.xml')
 
-for $i in ($fichariodoc//individuo)
-where $i[idade>17]
-return {data($i/@nome)}
+return count($publicadoc//publication[year>2011])
 
 ~~~
 
@@ -71,11 +69,11 @@ Retorne a categoria cujo `<label>` em inglês seja 'e-Science Domain'.
 ### Resolução
 ~~~xquery
 
-let $fichariodoc := doc('https://raw.githubusercontent.com/santanche/lab2learn/master/xml/fichario.xml')
+let $publicadoc := doc('http://www.ic.unicamp.br/~santanch/publications/publications.xml')
 
-for $i in ($fichariodoc//individuo)
-where $i[idade>17]
-return {data($i/@nome)}
+for $i in ($publicadoc//categories/category)
+where $i/label[@lang='en-US'] = 'e-Science Domain'
+return $i
 
 ~~~
 
@@ -85,11 +83,11 @@ Retorne as publicações associadas à categoria cujo `<label>` em inglês seja 
 ### Resolução
 ~~~xquery
 
-let $fichariodoc := doc('https://raw.githubusercontent.com/santanche/lab2learn/master/xml/fichario.xml')
+let $publicadoc := doc('http://www.ic.unicamp.br/~santanch/publications/publications.xml')
 
-for $i in ($fichariodoc//individuo)
-where $i[idade>17]
-return {data($i/@nome)}
+for $i in ($publicadoc//categories/category)
+where $i/label[@lang='en-US'] = 'e-Science Domain'
+return $i
 
 ~~~
 
@@ -102,11 +100,6 @@ Liste o nome de todas as classificações que estão apenas dois níveis imediat
 ### Resolução
 ~~~xquery
 
-let $fichariodoc := doc('https://raw.githubusercontent.com/santanche/lab2learn/master/xml/fichario.xml')
-
-for $i in ($fichariodoc//individuo)
-where $i[idade>17]
-return {data($i/@nome)}
 
 ~~~
 
@@ -117,11 +110,7 @@ Apresente todas as classificações de um componente a sua escolha (diferente de
 ### Resolução
 ~~~xquery
 
-let $fichariodoc := doc('https://raw.githubusercontent.com/santanche/lab2learn/master/xml/fichario.xml')
 
-for $i in ($fichariodoc//individuo)
-where $i[idade>17]
-return {data($i/@nome)}
 
 ~~~
 
@@ -133,7 +122,9 @@ Liste todos os códigos ChEBI dos componentes disponíveis.
 
 #### Resolução
 ~~~xquery
-(escreva aqui a resolução em XQuery)
+
+
+
 ~~~
 
 ### Questão 3.2
@@ -142,7 +133,9 @@ Liste todos os códigos ChEBI e primeiro nome (sinônimo) de cada um dos compone
 
 #### Resolução
 ~~~xquery
-(escreva aqui a resolução em XQuery)
+
+
+
 ~~~
 
 ### Questão 3.3
