@@ -10,7 +10,11 @@ Construa uma comando SELECT que retorne dados equivalentes a este XPath
 
 ### Resolução
 ~~~xquery
-select nome from individuo where idade > 20;
+
+for $i in ($individuo)
+where $i[idade>20]
+return {data($i/@nome)}
+
 ~~~
 
 ## Questão 2
@@ -25,7 +29,9 @@ return {data($i/@nome)}
 ~~~
 ### Resolução
 ~~~xquery
-(escreva aqui a resolução em XQuery)
+
+//fichariodoc//individuo[idade>17]/@nome
+
 ~~~
 
 ## Questão 3
@@ -40,7 +46,9 @@ return {data($i/@nome)}
 
 ### Resolução
 ~~~sql
-(escreva aqui a resolução em SQL)
+
+select nome from individuo where idade > 17;
+
 ~~~
 
 ## Questão 4
@@ -48,7 +56,13 @@ Retorne quantas publicações são posteriores ao ano de 2011.
 
 ### Resolução
 ~~~xquery
-(escreva aqui a resolução em XQuery)
+
+let $fichariodoc := doc('https://raw.githubusercontent.com/santanche/lab2learn/master/xml/fichario.xml')
+
+for $i in ($fichariodoc//individuo)
+where $i[idade>17]
+return {data($i/@nome)}
+
 ~~~
 
 ## Questão 5
@@ -56,7 +70,13 @@ Retorne a categoria cujo `<label>` em inglês seja 'e-Science Domain'.
 
 ### Resolução
 ~~~xquery
-(escreva aqui a resolução em XQuery)
+
+let $fichariodoc := doc('https://raw.githubusercontent.com/santanche/lab2learn/master/xml/fichario.xml')
+
+for $i in ($fichariodoc//individuo)
+where $i[idade>17]
+return {data($i/@nome)}
+
 ~~~
 
 ## Questão 6
@@ -64,7 +84,13 @@ Retorne as publicações associadas à categoria cujo `<label>` em inglês seja 
 
 ### Resolução
 ~~~xquery
-(escreva aqui a resolução em XQuery)
+
+let $fichariodoc := doc('https://raw.githubusercontent.com/santanche/lab2learn/master/xml/fichario.xml')
+
+for $i in ($fichariodoc//individuo)
+where $i[idade>17]
+return {data($i/@nome)}
+
 ~~~
 
 ## Tarefas com DRON e PubChem
@@ -75,7 +101,13 @@ Liste o nome de todas as classificações que estão apenas dois níveis imediat
 
 ### Resolução
 ~~~xquery
-(escreva aqui a resolução em XQuery)
+
+let $fichariodoc := doc('https://raw.githubusercontent.com/santanche/lab2learn/master/xml/fichario.xml')
+
+for $i in ($fichariodoc//individuo)
+where $i[idade>17]
+return {data($i/@nome)}
+
 ~~~
 
 ## Questão 2
@@ -84,7 +116,13 @@ Apresente todas as classificações de um componente a sua escolha (diferente de
 
 ### Resolução
 ~~~xquery
-(escreva aqui a resolução em XQuery)
+
+let $fichariodoc := doc('https://raw.githubusercontent.com/santanche/lab2learn/master/xml/fichario.xml')
+
+for $i in ($fichariodoc//individuo)
+where $i[idade>17]
+return {data($i/@nome)}
+
 ~~~
 
 ## Questão 3
