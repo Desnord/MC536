@@ -99,6 +99,7 @@ Liste o nome de todas as classificações que estão apenas dois níveis imediat
 ~~~xquery
 
 let $dron := doc('https://raw.githubusercontent.com/santanche/lab2learn/master/data/faers-2017-dron/dron.xml')
+return {data($dron//drug/drug/@name)}
 
 ~~~
 
@@ -109,7 +110,8 @@ Apresente todas as classificações de um componente a sua escolha (diferente de
 ### Resolução
 ~~~xquery
 
-
+let $dron := doc('https://raw.githubusercontent.com/santanche/lab2learn/master/data/faers-2017-dron/dron.xml')
+return {data($dron//drug/drug[drug/drug/@name="FLUOXETINE"]/@name)}
 
 ~~~
 
@@ -122,7 +124,9 @@ Liste todos os códigos ChEBI dos componentes disponíveis.
 #### Resolução
 ~~~xquery
 
-
+let $pubchem := doc('https://raw.githubusercontent.com/santanche/lab2learn/master/data/pubchem/pubchem-chebi.xml')
+for $cod in ($pubchem//RegistryID)
+return substring($cod/text(), 7)
 
 ~~~
 
@@ -133,8 +137,15 @@ Liste todos os códigos ChEBI e primeiro nome (sinônimo) de cada um dos compone
 #### Resolução
 ~~~xquery
 
+let $pubchem := doc('https://raw.githubusercontent.com/santanche/lab2learn/master/data/pubchem/pubchem-chebi.xml')
+let $dron := doc('https://raw.githubusercontent.com/santanche/lab2learn/master/data/faers-2017-dron/dron.xml')
 
-
+for $p in ($pubchem//RegistryID), $d in ($dron//drug)
+where concat('http://purl.obolibrary.org/obo/CHEBI_',substring($p/text(), 7)) = $d/@id
+let $nome := $d/@name
+group by $nome
+let $aux := concat(substring($p/text(), 7),' ')
+return {concat($aux,$nome), '&#xa;'}
 ~~~
 
 ### Questão 3.3
@@ -143,5 +154,15 @@ Para cada código ChEBI, liste os sinônimos e o nome que aparece para o mesmo c
 
 #### Resolução
 ~~~xquery
-(escreva aqui a resolução em XQuery)
+
+let $pubchem := doc('https://raw.githubusercontent.com/santanche/lab2learn/master/data/pubchem/pubchem-chebi.xml')
+let $dron := doc('https://raw.githubusercontent.com/santanche/lab2learn/master/data/faers-2017-dron/dron.xml')
+
+for $p in ($pubchem//RegistryID), $d in ($dron//drug)
+where concat('http://purl.obolibrary.org/obo/CHEBI_',substring($p/text(), 7)) = $d/@id
+let $nome := $d/@name
+group by $nome
+let $aux := concat(substring($p/text(), 7),' ')
+return {concat($aux,$nome), '&#xa;'}
+
 ~~~
