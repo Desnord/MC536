@@ -11,7 +11,7 @@ Construa uma comando SELECT que retorne dados equivalentes a este XPath
 ### Resolução
 ~~~xquery
 
-for $i in ($individuo)
+for $i in ($fichariodoc//individuo)
 where $i[idade>20]
 return {data($i/@nome)}
 
@@ -30,7 +30,7 @@ return {data($i/@nome)}
 ### Resolução
 ~~~xquery
 
-//fichariodoc//individuo[idade>17]/@nome
+//individuo[idade>17]/@nome
 
 ~~~
 
