@@ -6,14 +6,11 @@
 Construa uma comando SELECT que retorne dados equivalentes a este XPath
 ~~~xquery
 //individuo[idade>20]/@nome
-
-select nome from individuo where idade > 20;
-
 ~~~
 
 ### Resolução
 ~~~xquery
-(escreva aqui a resolução em XPath)
+select nome from individuo where idade > 20;
 ~~~
 
 ## Questão 2
