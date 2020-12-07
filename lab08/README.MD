@@ -72,7 +72,7 @@ Retorne a categoria cujo `<label>` em inglês seja 'e-Science Domain'.
 let $publicadoc := doc('http://www.ic.unicamp.br/~santanch/publications/publications.xml')
 
 for $i in ($publicadoc//categories/category)
-where $i/label[@lang='en-US'] = 'e-Science Domain'
+where $i/label[@lang = 'en-US'] = 'e-Science Domain'
 return $i
 
 ~~~
@@ -85,9 +85,7 @@ Retorne as publicações associadas à categoria cujo `<label>` em inglês seja 
 
 let $publicadoc := doc('http://www.ic.unicamp.br/~santanch/publications/publications.xml')
 
-for $i in ($publicadoc//categories/category)
-where $i/label[@lang='en-US'] = 'e-Science Domain'
-return $i
+return $publicadoc//categories/category[label = 'e-Science Domain']/label[@lang = 'en-US']
 
 ~~~
 
@@ -100,6 +98,7 @@ Liste o nome de todas as classificações que estão apenas dois níveis imediat
 ### Resolução
 ~~~xquery
 
+let $dron := doc('https://raw.githubusercontent.com/santanche/lab2learn/master/data/faers-2017-dron/dron.xml')
 
 ~~~
 
